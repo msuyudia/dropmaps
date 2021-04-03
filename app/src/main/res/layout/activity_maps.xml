@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.maps.MapsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_60"
+        android:background="@color/white"
+        android:elevation="@dimen/margin_1"
+        android:paddingStart="@dimen/margin_44"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:subtitle="@string/text_pick_address"
+        app:subtitleTextColor="@color/black"/>
+
+    <ImageView
+        android:id="@+id/btn_end_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:elevation="@dimen/margin_1"
+        android:src="@drawable/ic_search"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar"
+        app:layout_constraintEnd_toEndOf="@id/toolbar"
+        app:layout_constraintTop_toTopOf="@id/toolbar"/>
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginEnd="@dimen/margin_8"
+        android:elevation="@dimen/margin_1"
+        android:src="@drawable/ic_back"
+        app:layout_constraintBottom_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="@id/toolbar"
+        app:layout_constraintTop_toTopOf="@id/toolbar"/>
+
+    <LinearLayout
+        android:id="@+id/container_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_0"
+        android:background="@color/white"
+        android:elevation="@dimen/margin_1"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintVertical_chainStyle="spread">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/sv_places"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_16"
+            android:background="@drawable/bg_search_address"
+            app:iconifiedByDefault="false"/>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_1"
+            android:layout_marginTop="@dimen/margin_16"
+            android:background="@color/light_gray"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_places"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_16"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_place"/>
+
+    </LinearLayout>
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_20"
+        android:src="@drawable/ic_marker"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_pick_address"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:shimmer_dropoff="0.5"
+        app:shimmer_duration="3000">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_16">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_place_name"
+                style="@style/TextViewPlaceNameTheme"
+                android:text="@string/text_loading"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_place_address"
+                style="@style/TextViewPlaceAddressTheme"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_pick_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                android:enabled="false"
+                android:fontFamily="@font/roboto_medium"
+                android:insetTop="@dimen/margin_0"
+                android:insetBottom="@dimen/margin_0"
+                android:text="@string/text_pick_address"
+                android:textAllCaps="false"
+                app:cornerRadius="@dimen/margin_12"/>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

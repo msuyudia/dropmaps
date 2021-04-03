@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Drop</string>
+    <string name="text_pick_address">Pilih Alamat</string>
+    <string name="text_loading">Loading . . .</string>
+    <string name="text_failed_load_address">Gagal mengambil alamat</string>
+    <string name="text_search_address">Cari Alamat</string>
+    <string name="text_accept_location_permission">Tolong terima perizinan lokasi, agar aplikasi dapat berjalan!</string>
+    <string name="text_name_not_found">Nama tidak tersedia</string>
+    <string name="text_address_not_found">Alamat tidak tersedia</string>
+</resources>
